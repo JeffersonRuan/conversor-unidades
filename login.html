@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Login Responsivo</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#7b3ff2">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="logo-container">
+        <h1 class="logo">Conversor</h1>
+      </div>
+      <h2 class="title">Login</h2>
+      
+      <form id="form-login" class="form-login">
+        <div class="input-group">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" name="email" placeholder="Exemplo: email@gmail.com" required>
+        </div>
+        
+        <div class="input-group">
+          <label for="login-password">Senha</label>
+          <input type="password" id="login-password" name="password" placeholder="Insira sua senha" required>
+          <a href="#" class="forgot-password">Esqueceu a senha?</a>
+        </div>
+        
+        <button type="submit" class="btn primary">Entrar</button>
+      </form>
+      
+      <div class="divider">
+        <span class="divider-line"></span>
+        <span class="divider-text">ou</span>
+        <span class="divider-line"></span>
+      </div>
+      
+      <a href="cadastro.html"><button class="btn secondary">Criar nova conta</button></a>
+      
+      <p class="footer">© <span class="current-year"></span> Sua Empresa. Todos os direitos reservados.</p>
+    </div>
+  </div>
+  
+  <script src="/js/script.js"></script>
+</body>
+</html>

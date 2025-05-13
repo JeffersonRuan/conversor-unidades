@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#7b3ff2">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="logo-container">
+        <h1 class="logo">Conversor</h1>
+      </div>
+      <h2 class="title">Criar conta</h2>
+      
+      <form id="form-cadastro" class="form-register">
+        <div class="input-group">
+          <label for="name">Nome completo</label>
+          <input type="text" id="name" name="name" placeholder="Exemplo: João Silva" required>
+        </div>
+
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Exemplo: email@gmail.com" required>
+        </div>
+
+        <div class="input-group">
+          <label for="password">Senha</label>
+          <input type="password" id="password" name="password" placeholder="Insira sua senha" required>
+          <div class="password-hint">Use pelo menos 8 caracteres</div>
+        </div>
+
+        <button type="submit" class="btn primary">Cadastrar</button>
+      </form>
+      
+      <div class="divider">
+        <span class="divider-line"></span>
+        <span class="divider-text">Já tem uma conta?</span>
+        <span class="divider-line"></span>
+      </div>
+      
+      <a href="login.html" class="btn secondary">Fazer login</a>
+      
+      <p class="footer">© <span class="current-year"></span> Sua Empresa. Todos os direitos reservados.</p>
+    </div>
+  </div>
+  
+  <script src="/js/script.js"></script>
+</body>
+</html>
