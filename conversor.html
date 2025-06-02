@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Conversor</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="container">
+  <div class="card tall-card">
+    <button class="voltar" onclick="location.href='index.html'">←</button>
+    <h2>Conversor Monetário</h2>
+
+    <label>BRL (R$)</label>
+    <input type="text" id="valorBRL" placeholder="Digite o valor">
+
+    <label>USD (US$)</label>
+    <input type="text" id="valorUSD" placeholder="Digite o valor">
+
+    <div class="teclado">
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>C</button>
+      <button>0</button>
+      <button>.</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const inputBRL = document.getElementById('valorBRL');
+  const inputUSD = document.getElementById('valorUSD');
+  let selectedInput = inputBRL;
+
+  // Define uma taxa de câmbio fixa
+  const taxaCambio = 5.70; // 1 USD = 5.70 BRL
+
+  inputBRL.addEventListener('focus', () => selectedInput = inputBRL);
+  inputUSD.addEventListener('focus', () => selectedInput = inputUSD);
+
+  function converter() {
+    let valorBRL = parseFloat(inputBRL.value.replace(',', '.')) || 0;
+    let valorUSD = parseFloat(inputUSD.value.replace(',', '.')) || 0;
+
+    if (selectedInput === inputBRL) {
+      inputUSD.value = (valorBRL / taxaCambio).toFixed(2);
+    } else {
+      inputBRL.value = (valorUSD * taxaCambio).toFixed(2);
+    }
+  }
+
+  // Atualiza os valores em tempo real
+  inputBRL.addEventListener('input', converter);
+  inputUSD.addEventListener('input', converter);
+
+  // Teclado numérico
+  const buttons = document.querySelectorAll('.teclado button');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.textContent === 'C') {
+        selectedInput.value = '';
+      } else {
+        selectedInput.value += btn.textContent;
+      }
+      converter();
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Conversor de Medidas</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    select, input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="card tall-card">
+    <button class="voltar" onclick="location.href='index.html'">←</button>
+    <h2>Conversor de Medidas</h2>
+
+    <label>Valor</label>
+    <input type="text" id="inputValor" placeholder="Digite o valor">
+
+    <label>De:</label>
+    <select id="unidadeDe">
+      <option value="km">km</option>
+      <option value="m">m</option>
+      <option value="cm">cm</option>
+      <option value="mm">mm</option>
+      <option value="mi">milha</option>
+      <option value="in">polegada</option>
+      <option value="ft">pé</option>
+    </select>
+
+    <label>Para:</label>
+    <select id="unidadePara">
+      <option value="m">m</option>
+      <option value="km">km</option>
+      <option value="cm">cm</option>
+      <option value="mm">mm</option>
+      <option value="mi">milha</option>
+      <option value="in">polegada</option>
+      <option value="ft">pé</option>
+    </select>
+
+    <label>Resultado:</label>
+    <input type="text" id="resultado" readonly placeholder="Resultado">
+
+    <div class="teclado">
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>C</button>
+      <button>0</button>
+      <button>.</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const inputValor = document.getElementById('inputValor');
+  const resultado = document.getElementById('resultado');
+  const unidadeDe = document.getElementById('unidadeDe');
+  const unidadePara = document.getElementById('unidadePara');
+
+  const fatores = {
+    km: 1000,
+    m: 1,
+    cm: 0.01,
+    mm: 0.001,
+    mi: 1609.34,    // milhas
+    in: 0.0254,     // polegadas
+    ft: 0.3048      // pés
+  };
+
+  function converterMedida() {
+    let valor = parseFloat(inputValor.value.replace(',', '.'));
+    if (isNaN(valor)) {
+      resultado.value = '';
+      return;
+    }
+
+    let de = unidadeDe.value;
+    let para = unidadePara.value;
+
+    // Converter para metros, depois para a unidade desejada
+    let valorEmMetros = valor * fatores[de];
+    let valorConvertido = valorEmMetros / fatores[para];
+
+    resultado.value = valorConvertido.toFixed(2);
+  }
+
+  inputValor.addEventListener('input', converterMedida);
+  unidadeDe.addEventListener('change', converterMedida);
+  unidadePara.addEventListener('change', converterMedida);
+
+  // Teclado virtual
+  const buttons = document.querySelectorAll('.teclado button');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.textContent === 'C') {
+        inputValor.value = '';
+        resultado.value = '';
+      } else {
+        inputValor.value += btn.textContent;
+      }
+      converterMedida();
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -167,6 +167,80 @@ body {
   color: var(--text-secondary);
 }
 
+.tall-card {
+  min-height: 90vh;
+  justify-content: space-between;
+}
+
+h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+
+button {
+  width: 80%;
+  padding: 12px;
+  margin: 0;
+  border-radius: 10px;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  font-weight: bold;
+}
+
+
+button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+label {
+  align-self: flex-start;
+  color: white;
+  margin-top: 10px;
+}
+
+
+.teclado {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;  
+  margin-top: auto;
+}
+
+.teclado button {
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 20px;
+  padding: 15px 0;
+}
+
+.teclado button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Botão voltar */
+.voltar {
+  width: auto;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  align-self: flex-start;
+}
+
+
 /* Media Queries para diferentes tamanhos de tela */
 @media (max-width: 768px) {
   .card {

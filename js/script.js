@@ -42,7 +42,7 @@ if (formLogin) {
     .then(data => {
       if (data.status === 'ok') {
         // Redirecionar para index.php após login
-        window.location.href = 'index.php';
+        window.location.href = 'index.html';
       } else {
         alert("Erro: " + data.mensagem);
       }

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Conversor de Temperatura</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="container">
+  <div class="card tall-card">
+    <button class="voltar" onclick="location.href='index.html'">←</button>
+    <h2>Conversor de Temperatura</h2>
+
+    <label>°C (Celsius)</label>
+    <input type="text" id="celsius" placeholder="Digite o valor em °C">
+
+    <label>°F (Fahrenheit)</label>
+    <input type="text" id="fahrenheit" placeholder="Digite o valor em °F">
+
+    <div class="teclado">
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>C</button>
+      <button>0</button>
+      <button>.</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const inputC = document.getElementById('celsius');
+  const inputF = document.getElementById('fahrenheit');
+  let selectedInput = inputC;
+
+  inputC.addEventListener('focus', () => selectedInput = inputC);
+  inputF.addEventListener('focus', () => selectedInput = inputF);
+
+  function converter() {
+    const valorC = parseFloat(inputC.value.replace(',', '.'));
+    const valorF = parseFloat(inputF.value.replace(',', '.'));
+
+    if (selectedInput === inputC && !isNaN(valorC)) {
+      inputF.value = ((valorC * 9 / 5) + 32).toFixed(2);
+    } else if (selectedInput === inputF && !isNaN(valorF)) {
+      inputC.value = ((valorF - 32) * 5 / 9).toFixed(2);
+    }
+  }
+
+  inputC.addEventListener('input', converter);
+  inputF.addEventListener('input', converter);
+
+  const buttons = document.querySelectorAll('.teclado button');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.textContent === 'C') {
+        selectedInput.value = '';
+      } else {
+        selectedInput.value += btn.textContent;
+      }
+      converter();
+    });
+  });
+</script>
+
+</body>
+</html>
